@@ -1,0 +1,9 @@
+<h1>All about me!</h1>
+<div ng-repeat="profile in profiles" class="list-group">
+    <a ng-href="{{profile.url}}" target='_blank'
+       ng-mouseover="selectedProfile($index)"
+       ng-mouseout="selectedProfile(99)"
+       class="list-group-item"
+       ng-class="{active: selectedRow == $index}">{{profile.site}}</a>
+</div>
+
