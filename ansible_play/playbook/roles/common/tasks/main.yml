@@ -1,0 +1,11 @@
+---
+- name: update cache
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: update server
+  apt: upgrade=full
+  
+- include: ntp.yml
+
+- name: upload ssh known hosts
+  template: src=known_hosts dest=/home/ubuntu/.ssh/known_hosts mode=0600

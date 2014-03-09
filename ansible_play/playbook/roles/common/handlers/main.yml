@@ -1,0 +1,14 @@
+---
+######################################################
+# Handlers
+#
+# file: roles/common/handlers/main.yml
+
+- name: restart ntp
+  action: service name=ntp state=restarted
+
+- name: restart nrpe
+  action: service name=nagios-nrpe-server enabled=yes state=restarted
+
+- name: restart apache
+  action: service name=apache2 state=restarted

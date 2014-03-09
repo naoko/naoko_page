@@ -1,0 +1,16 @@
+---
+######################################################
+# Handlers
+#
+# Ansible detects when an action changes something.  For example, the
+# file permissions change, a file's content changed, a package was
+# just installed (or removed), a user was created (or removed).  When 
+# a change is detected, Ansible can optionally notify one or more
+# Handlers.  Handlers can take any action that a Task can. Most
+# commonly they are used to restart a service when its configuration
+# changes.
+# 
+# file: roles/webtier/handlers/main.yml
+
+- name: restart apache
+  action: service name=apache2 state=restarted

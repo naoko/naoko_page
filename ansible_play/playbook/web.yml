@@ -1,0 +1,15 @@
+---
+################################################
+# 
+#  Head Ansible playbook for webservers
+#
+# file: webservers.yml
+
+- hosts: webservers
+
+  sudo: true
+
+  roles:
+    - common
+    - webtier
+    - angular_app

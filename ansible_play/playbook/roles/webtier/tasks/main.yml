@@ -1,0 +1,43 @@
+---
+
+- name: test connection
+  ping:
+
+- name: install apache and git
+  sudo: True
+  apt: name=apache2 state=present
+
+- name: apache push default virtualhost configuration template
+  template:
+    src=default_vh.j2
+    dest=/etc/apache2/sites-available/default
+  tags: deploy
+
+- name: apache | enable rewrite module
+  command: a2enmod rewrite
+  notify: restart apache
+
+- name: apache | enable our site
+  command: a2ensite default
+
+- name: apache | copy hosts file
+  template:
+    src=hosts
+    dest=/etc/hosts
+  tags: deploy
+
+- name: apache | copy hostname file
+  template:
+    src=hostname
+    dest=/etc/hostname
+  tags: deploy
+
+- name: apache remove default index file from default docroot
+  file: path={{ web_root }}/index.html state=absent
+
+# this will set self-signed cert. for very first setup
+# - include: ssl.yml
+
+- name: apache insure deamon is running correctly
+  service: name=apache2 state=restarted
+  tags: deploy

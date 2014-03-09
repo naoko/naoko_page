@@ -1,0 +1,25 @@
+---
+
+- name: angular | create user app dir on user home
+  action: file path=/home/ubuntu/naoko_page mode=0764 state=directory owner=ubuntu group=ubuntu
+  tags: deploy
+
+- name: angular | apply permissions recursively for projdct dir to prep copy
+  shell: chown -R ubuntu /home/ubuntu/naoko_page && chmod -R 2775 /home/ubuntu/naoko_page
+  tags: deploy
+
+- name: angular | copy dist
+  synchronize: src=/Users/nreeves/WebstormProjects/naoko_page/dist/ dest=naoko_page/ archive=no delete=yes recursive=yes
+  tags: deploy
+
+- name: angular | apply permissions so that root/apache can read
+  shell: chown -R root /home/ubuntu/naoko_page && chmod -R 2775 /home/ubuntu/naoko_page
+  tags: deploy
+
+- name: angular | ensure to remove folder/link if exists
+  file: path=/etc/www/naoko_page state=absent
+  tags: deploy
+
+- name: angular | create symlink
+  command: ln -s -f /home/ubuntu/naoko_page /var/www/
+  tags: deploy

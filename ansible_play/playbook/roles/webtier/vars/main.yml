@@ -1,0 +1,10 @@
+---
+ssl_cert_dest_dir: /etc/ssl/certs
+ssl_key_dest_dir: /etc/ssl/private
+ssl_cert_name: self-signed.crt
+ssl_key_name: self-signed.key
+server_name: perfectcompliance.com
+web_root: /var/www
+project_name: naoko_page
+servername: "{{ inventory_hostname }}"
+public_dns: "{{ inventory_hostname }}"

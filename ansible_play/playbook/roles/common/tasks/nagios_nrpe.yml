@@ -1,0 +1,27 @@
+- name: nagios | install nrpe
+  apt: state=latest pkg={{ item }}
+  with_items:
+    - nagios-nrpe-server
+    - nagios-plugins
+  tags: nagios
+
+- name: nagios | copy over basic nrpe tasks
+  action: template src=nagios_client_nrpe.cfg dest=/etc/nagios/nrpe.cfg
+  notify: restart nrpe
+
+- name: nagios | make sure nrpe is running
+  service: name=nagios-nrpe-server state=restarted
+
+- name: nagios | create nagios config dir
+  file: >
+    state=directory
+    path=/etc/nagios/hosts
+  delegate_to: "{{ nagios_host }}"
+
+- name: nagios | copy over basic server tasks
+  action: template src=nagios_server_nrpe.cfg dest=/etc/nagios/hosts/{{inventory_hostname}}.nrpe.cfg mode=0644
+  delegate_to: "{{ nagios_host }}"
+
+- name: nagios | reload nagios
+  action: service enabled=yes state=reloaded name=nagios3
+  delegate_to: "{{ nagios_host }}"

@@ -1,0 +1,17 @@
+- name: ntp | install ntp
+  apt: package=ntp state=present
+  tags: ntp
+
+- name: ntp | be sure ntpd is stopped
+  service: name=ntp state=stopped
+  tags: ntp
+
+- name: ntp | set timezone
+  template: src=ntp_timezone dest=/etc/timezone
+
+- name: ntp | load timezone
+  command: dpkg-reconfigure --frontend noninteractive tzdata
+
+- name: be sure ntpd is running and enabled
+  service: name=ntp state=running enabled=yes
+  tags: ntp

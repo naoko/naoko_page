@@ -1,0 +1,42 @@
+---
+
+- name: apache | enable ssl module
+  command: a2enmod ssl
+  notify: restart apache
+  tags: ssl
+
+- name: ssl certs dir
+  file: path={{ ssl_cert_dest_dir }} mode=755 state=directory owner=root group=root
+  sudo: yes
+  tags: ssl
+
+- name: ssl private dir
+  file: path={{ ssl_key_dest_dir }} mode=700 state=directory owner=root group=root
+  sudo: yes
+  tags: ssl
+
+- name: apache | Upload SSL private key.
+  copy: src=ssl/{{ ssl_cert_name }}
+    dest={{ ssl_cert_dest_dir }}/{{ ssl_cert_name }}
+    mode=644 owner=root group=root
+  notify: restart apache
+  tags: ssl
+
+- name: apache | Upload SSH public key.
+  copy: src=ssl/{{ ssl_key_name }}
+    dest={{ ssl_key_dest_dir }}/{{ ssl_key_name }}
+    mode=640 owner=root group=root
+  notify: restart apache
+  tags: ssl
+
+- name: apache push default virtualhost configuration template
+  template:
+    src=default_ssl.j2
+    dest=/etc/apache2/sites-available/default-ssl
+  notify: restart apache
+  tags: ssl
+
+- name: apache | enable our site
+  command: a2ensite default-ssl
+  notify: restart apache
+  tags: ssl

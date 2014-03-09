@@ -1,0 +1,16 @@
+###########################################
+# Host list/inventory for ansible runs
+# deploy and setup ------
+# ansible-playbook playbook/web.yml -c paramiko --private-key ~/.ssh/naoko-ec2.pem -i hosts/hosts_aws
+# deploy ---------
+# ansible-playbook playbook/web.yml -c paramiko --private-key ~/.ssh/naoko-ec2.pem --tags deploy -i hosts/hosts_aws
+--
+[webservers]
+# ssh ubuntu@54.200.70.52 -i .ssh/aoko-ec2.pem
+54.200.70.52 ansible_ssh_user=ubuntu
+
+
+
+
+
+
