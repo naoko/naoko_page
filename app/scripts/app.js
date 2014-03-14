@@ -13,6 +13,9 @@ angular.module('naokoPageApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/magical', {
+            templateUrl: 'magical_app/index.html'
+      })
       .when('/about', {
             templateUrl: 'views/about.html',
             controller: 'AboutCtrl'
