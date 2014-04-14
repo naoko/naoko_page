@@ -12,7 +12,6 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap-flatly/flatly.min.css" />
     <link rel="stylesheet" href="bower_components/messenger/build/css/messenger.css" />
     <link rel="stylesheet" href="bower_components/messenger/build/css/messenger-theme-future.css" />
     <link rel="stylesheet" href="bower_components/messenger/build/css/messenger-theme-flat.css" />
@@ -29,13 +28,49 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="header">
-        <ul class="nav nav-pills pull-right">
-            <li ng-class="{ active: isActive('/')}"><a ng-href="#/">Home</a></li>
-            <li ng-class="{ active: isActive('/about')}"><a ng-href="#/about">About</a></li>
-            <li ng-class="{ active: isActive('/magical')}"><a ng-href="#/magical">Magical</a></li>
-        </ul>
-        <h3 class="text-muted">go naoko</h3>
+    <div class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">go naoko</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav">
+                <li ng-class="{ active: isActive('/')}"><a ng-href="#/">Home</a></li>
+                <li ng-class="{ active: isActive('/about')}"><a ng-href="#/about">About</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Dropdown header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left">
+                <input type="text" class="form-control col-lg-8" placeholder="Search">
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
     <!-- Add your site or application content here -->
     <div class="fadein" ng-view=""></div>
@@ -63,6 +98,7 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/bootstrap/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/messenger/build/js/messenger.js"></script>
     <script src="bower_components/messenger/build/js/messenger-theme-future.js"></script>
@@ -79,6 +115,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/index.js"></script>
+        <script src="scripts/controllers/todo.js"></script>
         <!-- endbuild -->
 </body>
 </html>

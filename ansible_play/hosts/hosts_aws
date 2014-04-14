@@ -8,9 +8,3 @@
 [webservers]
 # ssh ubuntu@54.200.70.52 -i .ssh/aoko-ec2.pem
 54.200.70.52 ansible_ssh_user=ubuntu
-
-
-
-
-
-
