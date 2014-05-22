@@ -12,6 +12,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap-flatly/flatly.min.css" />
     <link rel="stylesheet" href="bower_components/messenger/build/css/messenger.css" />
     <link rel="stylesheet" href="bower_components/messenger/build/css/messenger-theme-future.css" />
     <link rel="stylesheet" href="bower_components/messenger/build/css/messenger-theme-flat.css" />
@@ -41,19 +42,7 @@
             <ul class="nav navbar-nav">
                 <li ng-class="{ active: isActive('/')}"><a ng-href="#/">Home</a></li>
                 <li ng-class="{ active: isActive('/about')}"><a ng-href="#/about">About</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Dropdown header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
+                <li ng-class="{ active: isActive('/cool')}"><a ng-href="#/cool">Cool Stuff</a></li>
             </ul>
             <form class="navbar-form navbar-left">
                 <input type="text" class="form-control col-lg-8" placeholder="Search">
@@ -96,9 +85,10 @@
     <![endif]-->
 
     <!-- build:js scripts/vendor.js -->
+    <script src="scripts/vendor/d3.min.js" charset="utf-8"></script>
+
     <!-- bower:js -->
     <script src="bower_components/jquery/jquery.js"></script>
-    <script src="bower_components/bootstrap/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/messenger/build/js/messenger.js"></script>
     <script src="bower_components/messenger/build/js/messenger-theme-future.js"></script>
@@ -115,7 +105,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/index.js"></script>
-        <script src="scripts/controllers/todo.js"></script>
+        <script src="scripts/controllers/cool.js"></script>
         <!-- endbuild -->
 </body>
 </html>

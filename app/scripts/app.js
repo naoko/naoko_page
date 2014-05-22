@@ -13,9 +13,9 @@ angular.module('naokoPageApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/todo', {
-            templateUrl: 'views/todo.html',
-            controller: 'TodoCtrl'
+      .when('/cool', {
+            templateUrl: 'views/cool.html',
+            controller: 'CoolCtrl'
       })
       .when('/about', {
             templateUrl: 'views/about.html',
