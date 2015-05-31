@@ -9,7 +9,7 @@
   tags: deploy
 
 - name: angular | copy dist
-  synchronize: src=/Users/nreeves/WebstormProjects/naoko_page/dist/ dest=naoko_page/ archive=no delete=yes recursive=yes
+  synchronize: src=/Users/nreeves/myproject/naoko_page/dist/ dest=naoko_page/ archive=no delete=yes recursive=yes
   tags: deploy
 
 - name: angular | apply permissions so that root/apache can read
